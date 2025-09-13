@@ -35,4 +35,24 @@ pipeline {
             }
         }
     }
+    post {
+        success {
+            script {
+                emailext from: "devopsarnab08@gmail.com" ,
+                    subject: "two-tier-flask-app deploy successfully" ,
+                    body: "build successfuly" ,
+                to: "devopsarnab08@gmail.com" ,
+                mimeType: 'text/html'
+            }
+        }
+        failure {
+            script {
+                emailext from: "devopsarnab08@gmail.com" ,
+                    subject: "two-tier-flask-app deploy faild" ,
+                    body: "build faild" ,
+                to: "devopsarnab08@gmail.com" ,
+                mimeType: 'text/html'
+            }
+        }
+    }
 }
